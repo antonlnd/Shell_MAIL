@@ -1,0 +1,6 @@
+
+#!/usr/bin/ksh
+#Written by Anton Landauer 8/1/17
+
+sqlite3 ~/Library/Mail/V5/MailData/Envelope\ Index --csv   "SELECT date(strftime(date_received),'unixepoch'),  subjects.subject FROM messages join subjects on messages.rowid = subjects.rowid WHERE date('now','start of month', '-12 days') = date(strftime(date_received),'unixepoch');"  | cat -n
+echo '\n Have a nice day \n🍕'  $USER '\n ' $(date && tput bel) 
